@@ -1,0 +1,87 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- iOS, Android, MacCatalyst -->
+		<TargetFrameworks>net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
+		<OutputType>Exe</OutputType>
+		<SingleProject>true</SingleProject>
+		<RootNamespace>Weekly_MAUI_App</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>Weekly MAUI App</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.xgeno.Weekly_MAUI_App</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationVersion>1.0</ApplicationVersion>
+		<AndroidVersionCode>1</AndroidVersionCode>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiImage Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" IsAppIcon="true" Color="#FFFFFF" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#4D7DD3" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="ViewControls\ArticleCell.xaml" />
+	  <MauiXaml Remove="ViewControls\ErrorIndicator.xaml" />
+	  <MauiXaml Remove="ViewControls\LoadingIndicator.xaml" />
+	  <MauiXaml Remove="Views\BookmarksPage.xaml" />
+	  <MauiXaml Remove="Views\StartPage.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\addbookmark.png" />
+	  <None Remove="Resources\Images\back.png" />
+	  <None Remove="Resources\Images\bookmarks.png" />
+	  <None Remove="Resources\Images\editions.png" />
+	  <None Remove="Resources\Images\error.png" />
+	  <None Remove="Resources\Images\nointernet.png" />
+	  <None Remove="Resources\Images\removebookmark.png" />
+	  <None Remove="Resources\Images\share.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="ViewControls\ArticleCell.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="ViewControls\ErrorIndicator.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="ViewControls\LoadingIndicator.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Views\BookmarksPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Views\StartPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui" Version="6.0.100-preview.5.794" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<InvariantGlobalization Condition="$(TargetFramework.Contains('-maccatalyst'))">true</InvariantGlobalization>
+		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-ios'))">iossimulator-x64</RuntimeIdentifier>
+		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-maccatalyst'))">maccatalyst-x64</RuntimeIdentifier>
+		<UseInterpreter Condition="$(TargetFramework.Contains('-android'))">True</UseInterpreter>
+	</PropertyGroup>
+	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
+		<AndroidEnvironment Include="Android\AndroidEnvironment.txt" />
+	</ItemGroup>
+
+</Project>

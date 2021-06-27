@@ -1,0 +1,34 @@
+﻿<Frame 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Weekly_MAUI_App.ViewControls.LoadingIndicator"
+    BackgroundColor="White"
+    Padding="20,12"
+    CornerRadius="8"
+    HasShadow="True"
+    IsVisible="False">
+
+    <Frame.Content>
+        <StackLayout
+            Spacing="8">
+
+            <ActivityIndicator
+                x:Name="actIndicator"
+                IsRunning="False"
+                WidthRequest="44"
+                HeightRequest="44"
+                Color="{StaticResource DarkTextColor}"
+                Scale="{OnPlatform iOS=1.3, Android=1.0}" />
+
+            <Label
+                x:Name="lblLoadingText"        
+                FontSize="12"
+                TextColor="{StaticResource DarkTextColor}"
+                FontFamily="RegularFont"
+                HorizontalOptions="Center"        
+                HorizontalTextAlignment="Center" />
+
+        </StackLayout>
+
+    </Frame.Content>
+</Frame>
