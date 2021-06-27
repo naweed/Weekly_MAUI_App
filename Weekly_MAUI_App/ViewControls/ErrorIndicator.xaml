@@ -1,0 +1,34 @@
+﻿<StackLayout 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Weekly_MAUI_App.ViewControls.ErrorIndicator"
+    IsVisible="False">
+
+    <Image
+        x:Name="imgError"
+        Source="{Binding ErrorImage, Mode=OneWay}"
+        HorizontalOptions="Center"
+        WidthRequest="64"
+        HeightRequest="64"
+        Aspect="AspectFit"
+        Margin="64,0"/>
+
+    <Label
+        Text="Uh-Oh!"
+        FontSize="14"
+        TextColor="{StaticResource DarkTextColor}"
+        FontFamily="MediumFont"
+        HorizontalOptions="Center"
+        HorizontalTextAlignment="Center"
+        Margin="24,0"/>
+
+    <Label
+        x:Name="lblErrorText"
+        FontSize="12"
+        TextColor="{StaticResource DarkTextColor}"
+        FontFamily="RegularFont"
+        HorizontalOptions="Center"
+        HorizontalTextAlignment="Center"
+        Margin="16,0"/>
+
+</StackLayout>
